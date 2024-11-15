@@ -18,6 +18,7 @@ export default clerkMiddleware((auth, req) => {
 
   for (const { matcher, allowedRoles } of matchers) {
     if (matcher(req) && !allowedRoles.includes(role!)) {
+      console.log("role", role);
       return NextResponse.redirect(new URL(`/${role}`, req.url));
     }
   }
